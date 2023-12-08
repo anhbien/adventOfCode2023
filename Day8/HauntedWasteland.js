@@ -134,7 +134,6 @@ const hauntedWasteland2 = (start) => {
 const hauntedWastelandP2 = () => {
     const map = createMap()
     let result = []
-    const dest = [...map.keys()].filter(x => x[2] === 'Z')
     let current = [...map.keys()].filter(x => x[2] === 'A')
     for (let j = 0; j < current.length; j++) {
         result.push(hauntedWasteland2(current[j]))
