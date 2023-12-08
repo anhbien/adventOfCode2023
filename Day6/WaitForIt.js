@@ -12,15 +12,30 @@ const readFileLines = filename =>
 const data = readFileLines('value.txt')
 
 const countPossibleWins = (time, distance) => {
-    let count = 0;
 
-    for (let hold = 1; hold < time; hold++) {
-        const longest = hold * (time - hold);
-        if (distance < longest) {
-            count++
+    // OPTION 1
+    // let count = 0;
+
+    // for (let hold = 1; hold < time; hold++) {
+    //     const longest = hold * (time - hold);
+    //     if (distance < longest) {
+    //         count++
+    //     }
+    // }
+
+    // return count
+
+
+    // OPTION 2
+    for (let start = 1, end = time; start < time && end > 1; start++, end--) {
+        const longestFront = start * (time - start)
+        const longestEnd = end * (time - end)
+        if (distance < longestFront && distance < longestEnd) {
+            console.log(start, end)
+            return end - start + 2 // 2 is because we need to include the start and end points
         }
     }
-    return count
+    return 0
 }
 
 const waitForItP1 = () => {
